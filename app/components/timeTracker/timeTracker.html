@@ -1,5 +1,13 @@
 <div>
 	<h1>In The Time Tracker View</h1>
-	<button ng-click='startExercise("running")'>Start Exercise</button>
-	<button ng-click='stopExercise("running")'>Stop Exercise</button>
+		<button ng-click='startWorkout()' ng-disabled='startWorkoutDisabled'>Start Workout</button>
+		<button ng-click='stopWorkout(selectedCategory)' ng-disabled='stopWorkoutDisabled'>Stop Workout</button>
+	<h2>Exercises</h2>
+	<div ng-repeat='category in exercises'>	<!-- ng-disabled on buttons to disable the category selectors once start exercise has run-->
+		<button ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>{{category}}</button>	<!-- set ng-class when current is selected using a function - if selected -->
+	</div>
+	
+	<h3>Start/Stop</h3>
+		<button ng-click='startExercise(selectedCategory)' ng-disabled='startExerciseDisabled'>Start Exercise</button>  
+		<button ng-click='stopExercise(selectedCategory)' ng-disabled='stopExerciseDisabled'>Stop Exercise</button>
 </div>

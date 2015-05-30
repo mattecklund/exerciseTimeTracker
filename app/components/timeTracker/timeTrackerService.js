@@ -4,8 +4,10 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 	console.log('In Her Majesty\'s timeTracker Service');
 
 	var workout = [];
-	var startTime;
-	var stopTime;
+	var fbArray = $firebaseArray(new Firebase(fb.url + 'users/workouts/'));
+
+	this.startTime = null;
+	this.stopTime = null;
 
 	this.startWorkout = function(){
 		console.log('started a workout');
@@ -13,7 +15,8 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 
 	this.stopWorkout = function(){
 		//save the workout object
-
+		console.log(workout);
+		fbArray.$add(workout);
 	}
 
 	this.startExercise = function(category){
@@ -26,10 +29,12 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 
 	this.stopExercise = function(category){
 		stopTime = performance.now()
-		var totalTime = Math.round((stopTime - startTime) / 100) / 10;
+		var totalTime = Math.round((stopTime - startTime) / 100) / 10; //Use Math.floor once you start doing real measurements
 		console.log(stopTime + ' is the stop time' );
 		workout[category].push({exerciseTime: totalTime})
-		console.log(workout);
+		startTime = null;
+		stopTime = null;
+		// console.log(workout);
 	}
 
 
