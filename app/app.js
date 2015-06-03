@@ -1,19 +1,44 @@
 var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute']);
 
-app.constant('fb', {
-	url: 'https://exercisetimetracker.firebaseio.com/'
+app.constant('urls', {
+	fb: 'https://exercisetimetracker.firebaseio.com/',
+	authn: '/authn',
+	timeTracker: '/timeTracker'
 })
 
-app.config(function($routeProvider){
+
+app.config(function($routeProvider, urls){
 	// $httpProvider.interceptors.push('httpRequestInterceptor');
 
 	$routeProvider
-		.when('/', {
+		.when(urls.timeTracker, {
 			templateUrl: 'app/components/timeTracker/timeTracker.html',
-			controller: 'timeTrackerCtrl'
+			controller: 'timeTrackerCtrl',
+			resolve: {
+				userAuthnData: function(authnService, $location){
+					if(authnService.authnObj.$getAuth()){
+						return authnService.authnObj.$getAuth();
+					} else {
+						$location.path(urls.authn);
+					}
+				}
+			}
+		})
+
+		.when(urls.authn, {
+			templateUrl: 'app/components/authn/authn.html',
+			controller: 'authnCtrl'
 		})
 
 		.otherwise({
-			redirectTo: '/'
+			resolve: { 
+				redirect: function(authnService, $location){
+					if(authnService.authnObj.$getAuth()){
+						$location.path(urls.timeTracker);
+					} else {
+						$location.path(urls.authn);
+					}
+				}
+			}
 		})
 })
