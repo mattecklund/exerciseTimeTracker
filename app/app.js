@@ -3,7 +3,8 @@ var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute']);
 app.constant('urls', {
 	fb: 'https://exercisetimetracker.firebaseio.com/',
 	authn: '/authn',
-	timeTracker: '/timeTracker'
+	timeTracker: '/timeTracker',
+	dashboard: '/dashboard'
 })
 
 
@@ -28,6 +29,11 @@ app.config(function($routeProvider, urls){
 		.when(urls.authn, {
 			templateUrl: 'app/components/authn/authn.html',
 			controller: 'authnCtrl'
+		})
+
+		.when(urls.dashboard, {
+			templateUrl: 'app/components/dashboard/dashboard.html',
+			controller: 'dashboardCtrl'
 		})
 
 		.otherwise({
