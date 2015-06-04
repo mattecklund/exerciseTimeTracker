@@ -2,8 +2,8 @@ var app = angular.module('exerciseTimeTracker');
 
 app.controller('authnCtrl', function($scope, $location, authnService, urls){
 	var loginCallback = function(user){
-    user.uid = user.uid.replace('simplelogin:', '');
-    $location.path(urls.timeTracker)
+    // user.uid = user.uid.replace('simplelogin:', '');
+    $location.path(urls.dashboard)
   };
 
   $scope.login = function () {

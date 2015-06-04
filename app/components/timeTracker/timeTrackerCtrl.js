@@ -2,8 +2,8 @@ var app = angular.module('exerciseTimeTracker');
 
 app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthnData, authnService){
 
-	// console.log(userAuthnData);
-	$scope.userId = userAuthnData.auth.uid.replace('simplelogin:', '');
+	console.log(userAuthnData);
+	// $scope.userId = userAuthnData.auth.uid.replace('simplelogin:', '');
 	// console.log($scope.userId);
 
 
@@ -39,7 +39,7 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 
 	$scope.stopWorkout = function(category){
 		timeTrackerService.stopExercise(category);
-		timeTrackerService.stopWorkout($scope.userId);
+		timeTrackerService.stopWorkout(userAuthnData.uid);
 		resetTimeTracker();		
 	};
 

@@ -16,6 +16,7 @@ app.service('authnService', function($firebaseAuth, urls, $location){
       password : user.password
     }).then(function(authnData){
       // user authenticated with Firebase
+      authnData.uid = authnData.uid.replace('simplelogin:', '');
       console.log(authnData);
       console.log("Logged In! User ID: " + authnData.uid);
       cb(authnData);
@@ -35,7 +36,8 @@ app.service('authnService', function($firebaseAuth, urls, $location){
   this.register = function(user, cb){
     authnService.authnObj.$createUser({
       email: user.email,
-      password: user.password
+      password: user.password,
+      name: user.name
     }).then(function(userObj){
         console.log("User created successfully");
         return authnService.authnObj.$authWithPassword({
@@ -44,10 +46,19 @@ app.service('authnService', function($firebaseAuth, urls, $location){
         });
     }).then(function(authnData){
       console.log(authnData);
-      if (authnData){
-        authnData.name = user.name;
-        authnData.timestamp = new Date().toISOString();
-        fbRef.child('users').child(authnData.uid.replace('simplelogin:', '')).set(authnData);
+      if (authnData){       //This takes the data received after login and creates a user profile.
+        authnData.name = user.name;   //Take the full name entered on registration and set it to the profile name (not username)
+        authnData.timestamp = new Date().toISOString();   //timestamp the user creation for potential data use.
+        authnData.uid = authnData.uid.replace('simplelogin:', '');
+        authnData.email = user.email;
+        // authnData.email = authnData[authnData.auth.provider].email;   //use this for any potential provider if the formatting is similar
+        delete authnData.expires;
+        delete authnData.provider;
+        delete authnData.token;
+        delete authnData.password;
+        // delete authnData[authnData.auth.provider];  //similar to comment above - this could potentially allow for more than one provider type
+
+        fbRef.child('users').child(authnData.uid).child('profile').set(authnData);
         cb(authnData);
       } else {
         console.log('Error');

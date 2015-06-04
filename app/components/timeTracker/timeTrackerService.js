@@ -11,13 +11,13 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 	timeService.stopTime = null;
 
 	this.startWorkout = function(){
-		console.log('started a workout');
+		// console.log('started a workout');
 	}
 
-	this.stopWorkout = function(userId){
+	this.stopWorkout = function(uid){
 		//save the workout object
 		// console.log(workout);
-		var fbArray = $firebaseArray(new Firebase(urls.fb + 'users/' + userId + '/workouts/'));
+		var fbArray = $firebaseArray(new Firebase(urls.fb + 'users/' + uid + '/workouts/'));
 		fbArray.$add(workout);
 		workout = [];
 	}

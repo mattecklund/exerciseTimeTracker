@@ -18,7 +18,9 @@ app.config(function($routeProvider, urls){
 			resolve: {
 				userAuthnData: function(authnService, $location){
 					if(authnService.authnObj.$getAuth()){
-						return authnService.authnObj.$getAuth();
+						var userObj = authnService.authnObj.$getAuth();
+						userObj.uid = userObj.uid.replace('simplelogin:', '');
+						return userObj;
 					} else {
 						$location.path(urls.authn);
 					}
@@ -33,14 +35,30 @@ app.config(function($routeProvider, urls){
 
 		.when(urls.dashboard, {
 			templateUrl: 'app/components/dashboard/dashboard.html',
-			controller: 'dashboardCtrl'
+			controller: 'dashboardCtrl',
+			resolve: {
+				userAuthnData: function(authnService, $location){
+					if(authnService.authnObj.$getAuth()){
+						var userObj = authnService.authnObj.$getAuth();
+						userObj.uid = userObj.uid.replace('simplelogin:', '');
+						return userObj;
+					} else {
+						$location.path(urls.authn);
+					}
+				},
+				userProfileData: function(authnService, dashboardService){
+					var uid = authnService.authnObj.$getAuth().uid;
+					uid = uid.replace('simplelogin:', '');	// Is there a more direct way of getting this?  Maybe from the userAuthnData object w/in resolve object
+					return dashboardService.getProfile(uid);
+				}
+			}
 		})
 
 		.otherwise({
 			resolve: { 
 				redirect: function(authnService, $location){
 					if(authnService.authnObj.$getAuth()){
-						$location.path(urls.timeTracker);
+						$location.path(urls.dashboard);
 					} else {
 						$location.path(urls.authn);
 					}
