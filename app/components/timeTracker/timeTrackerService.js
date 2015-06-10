@@ -4,7 +4,8 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 	console.log('In Her Majesty\'s timeTracker Service');
 	var timeService = this;
 
-	var workout = [];
+	var workout = {};
+	var timestamp = Date.now();
 	
 
 	timeService.startTime = null;
@@ -18,8 +19,11 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 		//save the workout object
 		// console.log(workout);
 		var fbArray = $firebaseArray(new Firebase(urls.fb + 'users/' + uid + '/workouts/'));
+		workout.timestamp = timestamp;
 		fbArray.$add(workout);
-		workout = [];
+
+
+		workout = {};
 	}
 
 	this.startExercise = function(category){
@@ -44,7 +48,7 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 			// console.log("Stop Time should be null: " + timeService.stopTime);
 			// console.log(workout);
 		} else {
-			console.log('in the else statement');
+			console.log('Already stopped the exercise');
 		}
 	}
 

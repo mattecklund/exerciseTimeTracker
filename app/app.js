@@ -47,9 +47,9 @@ app.config(function($routeProvider, urls){
 					}
 				},
 				userProfileData: function(authnService, dashboardService){
-					var uid = authnService.authnObj.$getAuth().uid;
-					uid = uid.replace('simplelogin:', '');	// Is there a more direct way of getting this?  Maybe from the userAuthnData object w/in resolve object
-					return dashboardService.getProfile(uid);
+					// var uid = authnService.authnObj.$getAuth().uid;
+					// uid = uid.replace('simplelogin:', '');	// Is there a more direct way of getting this?  Maybe from the userAuthnData object w/in resolve object
+					return dashboardService.getProfile(authnService.authnObj.$getAuth().uid);
 				}
 			}
 		})
