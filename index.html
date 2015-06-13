@@ -3,15 +3,55 @@
 <head>
 <title>Exercise Time Tracker</title>
 
+<link rel="stylesheet" type="text/css" href="app/shared/styles/main.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+
+
 </head>
 <body>
 
-	<ng-view></ng-view>
+
+
+	<div ng-controller='navCtrl' >
+		<section flex>
+			<div>
+	    		<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+	            	Toggle left
+		       	</md-button>
+		    </div>
+			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout="column" layout-fill>
+				<md-toolbar class="md-theme-indigo">
+	        		<h1 class="md-toolbar-tools">Navigation</h1>
+	      		</md-toolbar>
+
+	      		<md-content class="md-padding">
+	        		<md-button ng-click="close()" class="md-primary" hide-gt-md>	<!-- What does the hide-gt-md do? -->
+	          			Close 
+	        		</md-button>
+	        		<!-- <p hide-md show-gt-md> 
+	          			This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+	        		</p>  -->  	
+
+					<ul>
+						<li ng-repeat='link in links'>{{link}}</li>
+					</ul>
+				</md-content>
+			</md-sidenav>
+			<md-content>
+				<ng-view></ng-view>
+			</md-content>
+
+    	</section>
+	</div> 
+
+	<!-- <ng-view></ng-view> -->
 
 
 <!-- Angular -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.js"></script>
 
 <!-- Firebase -->
 <script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
@@ -24,11 +64,15 @@
 <script type="text/javascript" src='app/components/timeTracker/timeTrackerCtrl.js'></script>
 <script type="text/javascript" src='app/components/authn/authnCtrl.js'></script>
 <script type="text/javascript" src='app/components/dashboard/dashboardCtrl.js'></script>
+<script type="text/javascript" src='app/shared/nav/navCtrl.js'></script>
 
 <!-- Services -->
 <script type="text/javascript" src='app/components/timeTracker/timeTrackerService.js'></script>
 <script type="text/javascript" src='app/components/authn/authnService.js'></script>
 <script type="text/javascript" src='app/components/dashboard/dashboardService.js'></script>
+
+<!-- Angular Material -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
 
 </body>
 </html>

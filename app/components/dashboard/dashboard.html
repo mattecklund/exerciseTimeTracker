@@ -1,14 +1,14 @@
 <div>
 	<h1>Profile</h1>
-	{{userProfile.name}} - {{userProfile.email}} </br>
+	{{userProfile.name}} - {{userProfile.email}} <br />
 
 	<!-- <input type='text' placeholder='Current Weight' ng-model='userProfile.appProfile.currentWeight.weight'  /> -->
 
 	<div>
 		<div class='statsBox' ng-repeat='exercise in exercises'>
 			<div>{{exercise}}</div>
-			<div>{{exerciseTimeSevenDays[exercise].hours}}:{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</div>
-			</br>
+			<div>{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</div>
+			<br />
 		</div>
 	</div>
 

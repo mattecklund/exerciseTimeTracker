@@ -1,4 +1,4 @@
-var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute']);
+var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute', 'ngMaterial']);
 
 app.constant('urls', {
 	fb: 'https://exercisetimetracker.firebaseio.com/',
