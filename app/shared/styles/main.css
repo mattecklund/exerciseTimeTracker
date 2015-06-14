@@ -7,3 +7,29 @@ html, body {
   width: 100%;
   margin: 0;
 }
+
+.centeredContent {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
+
+
+
+
+@media (min-width: 960px) {
+  md-sidenav.md-locked-open {
+    width: 250px;
+    max-width: 250px;
+    min-width: 250px;
+  }
+
+  md-sidenav.md-locked-open, md-sidenav.md-locked-open-remove.md-closed, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right {
+    position: fixed;
+  }
+
+
+}

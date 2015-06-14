@@ -3,9 +3,10 @@
 <head>
 <title>Exercise Time Tracker</title>
 
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
 <link rel="stylesheet" type="text/css" href="app/shared/styles/main.css">
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+<meta name="viewport" content="initial-scale=1" />
 
 </head>
 <body>
@@ -13,13 +14,14 @@
 
 
 	<div ng-controller='navCtrl' >
-		<section flex>
+
+		<section layout="row" flex layout-fill>
 			<div>
-	    		<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-	            	Toggle left
-		       	</md-button>
-		    </div>
-			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout="column" layout-fill>
+			<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+            	NavBar
+	       	</md-button>
+	    </div>
+			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout-fill>
 				<md-toolbar class="md-theme-indigo">
 	        		<h1 class="md-toolbar-tools">Navigation</h1>
 	      		</md-toolbar>
@@ -32,17 +34,19 @@
 	          			This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
 	        		</p>  -->  	
 
-					<ul>
-						<li ng-repeat='link in links'>{{link}}</li>
-					</ul>
+					<md-list>
+						<md-list-item ng-repeat='link in links'>{{link}}</md-list-item>
+					</md-list>
 				</md-content>
-			</md-sidenav>
-			<md-content>
-				<ng-view></ng-view>
-			</md-content>
+			</md-sidenav>			
+			
+			
 
     	</section>
 	</div> 
+	<md-content>
+		<ng-view></ng-view>
+	</md-content>
 
 	<!-- <ng-view></ng-view> -->
 
@@ -72,7 +76,7 @@
 <script type="text/javascript" src='app/components/dashboard/dashboardService.js'></script>
 
 <!-- Angular Material -->
-<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 
 </body>
 </html>
