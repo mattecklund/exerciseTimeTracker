@@ -46,6 +46,7 @@ app.service('dashboardService', function($firebase, $firebaseObject, $firebaseAr
 
 	this.getSevenDaysWorkouts = function(uid){
 		// console.log('Getting Seven Days of Exercises');
+		sevenDaysWorkouts = [];
 		var deferred = $q.defer();
 		dashboardService.getWorkouts(uid).then(function(fbWorkouts){
 			getSevenDays();
@@ -57,6 +58,7 @@ app.service('dashboardService', function($firebase, $firebaseObject, $firebaseAr
 				if(fbWorkouts[i].timestamp >= sevenDaysAgo){
 					// console.log('there is a timestamp');
 					sevenDaysWorkouts.push(fbWorkouts[i]);
+
 				}
 			}
 			// console.log(sevenDaysWorkouts);

@@ -1,16 +1,58 @@
 <div class='centeredContent'>
-	<h1 class='md-display-1'>Dashboard</h1>
-	{{userProfile.name}} - {{userProfile.email}} <br />
+	<h1 class='md-display-3'>Dashboard</h1>
+	{{userProfile.name}} - {{userProfile.email}} <br /><br />
 
 	<!-- <input type='text' placeholder='Current Weight' ng-model='userProfile.appProfile.currentWeight.weight'  /> -->
-
-	<div>
-		<div class='statsBox' ng-repeat='exercise in exercises'>
-			<div>{{exercise}}</div>
-			<div>{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</div>
-			<br />
+	<div layout='row' layout-sm="column" layout-margin layout-fill>
+		<div class='dividerBox statsBox' flex>
+			<md-toolbar>
+				<h2 class='md-toolbar-tools' center>Exercise Totals in Last 7 Days</h2>
+			</md-toolbar>
+			<md-content class='md-default-theme'>
+				<md-list class=''>
+					<md-list-item class='md-3-line' ng-repeat='exercise in exercises' flex>
+						<div class="md-list-item-text">
+								<h3>{{exercise}}</h3>
+								<h4>{{exerciseTimeSevenDays[exercise].hours}}:{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</h4>
+						</div>
+						<md-divider class='dividerBox' ng-if="!$last"></md-divider>
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</div>
+		<div class='dividerBox statsBox' flex>
+			<md-toolbar>
+				<h2 class='md-toolbar-tools' center>Exercise Totals in Last 30 Days</h2>
+			</md-toolbar>
+			<md-content class='md-default-theme'>
+				<md-list class=''>
+					<md-list-item class='md-3-line' ng-repeat='exercise in exercises' flex>
+						<div class="md-list-item-text">
+								<h3>{{exercise}}</h3>
+								<h4>{{exerciseTimeSevenDays[exercise].hours}}:{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</h4>
+						</div>
+						<md-divider class='dividerBox' ng-if="!$last"></md-divider>
+					</md-list-item>
+				</md-list>
+			</md-content>
 		</div>
 	</div>
-
 	<!-- {{sevenDaysWorkouts}} -->
 </div>
+
+
+
+
+
+<!-- 
+<md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="exercise in exercises">
+        <div class="md-list-item-text">
+          <h3>{{exercise}}</h3>
+          <h4>{{exerciseTimeSevenDays[exercise].minutes}}:{{exerciseTimeSevenDays[exercise].seconds}}</h4>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content> -->

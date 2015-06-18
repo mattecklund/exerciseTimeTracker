@@ -14,6 +14,7 @@ app.controller('dashboardCtrl', function($scope, dashboardService, userAuthnData
 
 	// console.log($scope.userProfile);
 
+
 	dashboardService.getSevenDaysWorkouts(userAuthnData.uid).then(function(sevenDaysWorkouts){
 		$scope.sevenDaysWorkouts = sevenDaysWorkouts;
 		addExerciseTime($scope.sevenDaysWorkouts);
@@ -40,7 +41,7 @@ app.controller('dashboardCtrl', function($scope, dashboardService, userAuthnData
 			$scope.exerciseTimeSevenDays[exercise].hours = pad(Math.floor($scope.exerciseTimeSevenDays[exercise].totalTime / 3600));
 			$scope.exerciseTimeSevenDays[exercise].minutes = pad(Math.floor(($scope.exerciseTimeSevenDays[exercise].totalTime % 3600) / 60));
 			$scope.exerciseTimeSevenDays[exercise].seconds = pad(Math.floor(($scope.exerciseTimeSevenDays[exercise].totalTime % 3600) % 60));
-			console.log('Total ' + exercise + ' time is ' + $scope.exerciseTimeSevenDays[exercise].totalTime);
+			// console.log('Total ' + exercise + ' time is ' + $scope.exerciseTimeSevenDays[exercise].totalTime);
 		}
 
 	}
