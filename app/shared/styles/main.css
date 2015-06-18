@@ -9,18 +9,43 @@ html, body {
 }
 
 .centeredContent {
-  width: 80%;
-  margin: 0 auto;
-  text-align: center;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+.dividerBox {
+  border: 1px solid #ddd;
+}
+
+.statsBox {
+  /*min-width: 320px;*/
+  /*max-width: 500px;*/
+}
+
+.md-button {
+  text-align: left;
 }
 
 
+@media (min-width: 600px) and (max-width: 959px) {
+  .statsBox {
+    min-width: 200px;
+    max-width: 500px;
+  }
 
-
-
-
+}
 
 @media (min-width: 960px) {
+  .centeredContent {
+    width: 45%;
+    margin: 0 auto;
+  }
+
+  .statsBox {
+    min-width: 320px;
+    max-width: 500px;
+  }
+
   md-sidenav.md-locked-open {
     width: 250px;
     max-width: 250px;
