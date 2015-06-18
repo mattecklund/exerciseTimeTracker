@@ -27,5 +27,12 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
     }
   }
 
+  console.log($scope.userProfile);
+
+  if(authnService.authnObj.$getAuth().uid){
+    $scope.isAuthenticated = true;
+  } else {
+    $scope.isAuthenticated = false;
+  }
 
 })
