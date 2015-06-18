@@ -1,6 +1,6 @@
 var app = angular.module('exerciseTimeTracker');
 
-app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentRegistry, $log){
+app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentRegistry, $log, authnService, dashboardService){
 	$scope.links = ['timeTracker', 'dashboard', 'authn', 'terms', 'help', 'contact', 'about'];
 
 	$scope.close = function() {
@@ -16,5 +16,16 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
 	              // $log.debug("toggle left is done");
 	        });
   };
+
+  try {
+    $scope.userUid = authnService.authnObj.$getAuth().uid.replace('simplelogin:', '')
+    $scope.userProfile = dashboardService.getProfile($scope.userUid);
+  } catch(e) {
+    console.log('not logged in');
+    $scope.userProfile = {
+      name: 'Navigation'
+    }
+  }
+
 
 })
