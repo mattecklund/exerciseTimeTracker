@@ -2,7 +2,7 @@ var app = angular.module('exerciseTimeTracker');
 
 app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthnData, authnService){
 
-	console.log(userAuthnData);
+	// console.log(userAuthnData);
 	// $scope.userId = userAuthnData.auth.uid.replace('simplelogin:', '');
 	// console.log($scope.userId);
 
