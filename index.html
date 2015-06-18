@@ -3,9 +3,9 @@
 <head>
 <title>Exercise Time Tracker</title>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
 <link rel="stylesheet" type="text/css" href="app/shared/styles/main.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 <meta name="viewport" content="initial-scale=1" />
 
 </head>
@@ -23,7 +23,7 @@
 	    </div>
 			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout-fill>
 				<md-toolbar class="md-theme-indigo">
-	        		<h1 class="md-toolbar-tools">Navigation</h1>
+	        		<h1 class="md-toolbar-tools">{{userProfile.name}}</h1>
 	      		</md-toolbar>
 
 	      		<md-content class="md-padding">
@@ -35,7 +35,15 @@
 	        		</p>  -->  	
 
 					<md-list>
-						<md-list-item ng-repeat='link in links'>{{link}}</md-list-item>
+						<md-list-item><md-button href='/#/timeTracker'>Track Exercise Time</md-button></md-list-item>
+						<md-list-item><md-button href='/#/dashboard'>Dashboard</md-button></md-list-item>
+						<!-- <md-list-item><md-button href='/#/profile'>Profile</md-button></md-list-item> -->
+						<md-list-item ng-hide='isAuthenticated'><md-button href='/#/authn'>Sign In/Register</md-button></md-list-item>
+						<md-list-item ng-show='isAuthenticated'><md-button href='/#/logout'>Logout</md-button></md-list-item>
+						<md-list-item><md-button href='/#/terms'>Terms of Use</md-button></md-list-item>
+						<md-list-item><md-button href='/#/help'>Help</md-button></md-list-item>
+						<md-list-item><md-button href='/#/contact'>Contact</md-button></md-list-item>
+						<md-list-item><md-button href='/#/about'>About</md-button></md-list-item>
 					</md-list>
 				</md-content>
 			</md-sidenav>			
@@ -76,7 +84,7 @@
 <script type="text/javascript" src='app/components/dashboard/dashboardService.js'></script>
 
 <!-- Angular Material -->
-<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
 
 </body>
 </html>
