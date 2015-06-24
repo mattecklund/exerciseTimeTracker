@@ -9,9 +9,32 @@ html, body {
 }
 
 .centeredContent {
-    width: 95%;
     margin: 0 auto;
   }
+
+.leftedContent {
+  margin: 0;
+}
+
+.thinnedContent {
+  width: 95%;
+}
+
+.centeredText {
+  text-align: center;
+}
+
+.zIndex10 {
+  z-index: 10;
+}
+
+.zIndex20 {
+  z-index: 20;
+}
+
+.noLeftMargin {
+  margin-left: 0;
+}
 
 .dividerBox {
   border: 1px solid #ddd;
@@ -22,10 +45,59 @@ html, body {
   /*max-width: 500px;*/
 }
 
+.box-shadow-menu {
+  position: fixed;
+  padding-left: 1.25em;
+  margin: 1em;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0em;
+  top: 0.8em;
+  width: 1.75em;
+  height: 0.15em;
+  background: black;
+  box-shadow: 
+    0 0.4em 0 0 black,
+    0 0.8em 0 0 black;
+}
+
 .md-button {
+  /*margin: 6px 8px 6px 0;*/
+}
+
+.navBarTitle {
+  width: 70%;
+  max-width: 250px;
+}
+
+.navBarThin {
+  max-width: 50px;
+  float: left;
+  position: relative;
+}
+
+.navBarButton {
   text-align: left;
 }
 
+/*.form-control {
+  width: 70%;
+  margin: 10px auto;
+}*/
+
+.form {
+  height: 70%;
+}
+
+.form-control {
+  width: 80%;
+}
+
+.inputBox {
+  padding: 5px;
+}
 
 @media (min-width: 600px) and (max-width: 959px) {
   .statsBox {
@@ -37,8 +109,11 @@ html, body {
 
 @media (min-width: 960px) {
   .centeredContent {
-    width: 45%;
     margin: 0 auto;
+  }
+
+  .thinnedContent {
+    width: 45%;
   }
 
   .statsBox {
@@ -56,5 +131,20 @@ html, body {
     position: fixed;
   }
 
+  .form-control {
+    width: 100%;
+  }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

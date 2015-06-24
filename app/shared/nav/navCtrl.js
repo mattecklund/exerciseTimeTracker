@@ -10,15 +10,20 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
 			});
   	};
 
-  	$scope.toggleLeft = function() {
+  $scope.toggleLeft = function() {
     	$mdSidenav('left').toggle()
 	        .then(function(){
 	              // $log.debug("toggle left is done");
 	        });
   };
 
+  $scope.logout = function(){
+    authnService.logout();
+  }
+
   try {
     $scope.userUid = authnService.authnObj.$getAuth().uid.replace('simplelogin:', '')
+    // console.log($scope.userUid);
     $scope.userProfile = dashboardService.getProfile($scope.userUid);
   } catch(e) {
     console.log('not logged in');
@@ -27,9 +32,11 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
     }
   }
 
-  console.log($scope.userProfile);
+  
+  // console.log($scope.userProfile);
+  // console.log($scope.userProfile.name);
 
-  if(authnService.authnObj.$getAuth().uid){
+  if($scope.userProfile.name !== 'Navigation'){
     $scope.isAuthenticated = true;
   } else {
     $scope.isAuthenticated = false;

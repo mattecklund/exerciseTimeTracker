@@ -17,33 +17,25 @@
 
 		<section layout="row" flex layout-fill>
 			<div>
-			<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-            	NavBar
+			<md-button ng-click="toggleLeft()" class="md-primary box-shadow-menu zIndex10" aria-label='hamburger' hide-gt-md>
 	       	</md-button>
 	    </div>
 			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout-fill>
-				<md-toolbar class="md-theme-indigo">
-	        		<h1 class="md-toolbar-tools">{{userProfile.name}}</h1>
+				<md-toolbar class="md-theme-indigo" layout='row'>
+	        		<h1 class="md-toolbar-tools navBarTitle" flex>{{userProfile.name}}</h1>
+	        		<md-button ng-click='close()' class='box-shadow-menu zIndex10' flex></md-button>
 	      		</md-toolbar>
-
 	      		<md-content class="md-padding">
-	        		<md-button ng-click="close()" class="md-primary" hide-gt-md>	<!-- What does the hide-gt-md do? -->
-	          			Close 
-	        		</md-button>
-	        		<!-- <p hide-md show-gt-md> 
-	          			This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
-	        		</p>  -->  	
-
 					<md-list>
-						<md-list-item><md-button href='/#/timeTracker'>Track Exercise Time</md-button></md-list-item>
-						<md-list-item><md-button href='/#/dashboard'>Dashboard</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/timeTracker'>Track Exercise Time</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/dashboard'>Dashboard</md-button></md-list-item>
 						<!-- <md-list-item><md-button href='/#/profile'>Profile</md-button></md-list-item> -->
-						<md-list-item ng-hide='isAuthenticated'><md-button href='/#/authn'>Sign In/Register</md-button></md-list-item>
-						<md-list-item ng-show='isAuthenticated'><md-button href='/#/logout'>Logout</md-button></md-list-item>
-						<md-list-item><md-button href='/#/terms'>Terms of Use</md-button></md-list-item>
-						<md-list-item><md-button href='/#/help'>Help</md-button></md-list-item>
-						<md-list-item><md-button href='/#/contact'>Contact</md-button></md-list-item>
-						<md-list-item><md-button href='/#/about'>About</md-button></md-list-item>
+						<md-list-item ng-hide='isAuthenticated'><md-button class='navBarButton' ng-click="close()" href='/#/authn'>Sign In/Register</md-button></md-list-item>
+						<md-list-item ng-show='isAuthenticated'><md-button class='navBarButton' ng-click="logout()" href='/#/logout'>Sign Out</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/terms'>Terms of Use</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/help'>Help</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/contact'>Contact</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/about'>About</md-button></md-list-item>
 					</md-list>
 				</md-content>
 			</md-sidenav>			

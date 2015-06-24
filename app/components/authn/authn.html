@@ -1,23 +1,24 @@
-<div class="jumbotron col-md-6 col-md-offset-3 dash-head">
-    <a href="" ng-click="showReg()">{{status}}</a>
+<md-toolbar class='md-display-3 centeredText'>Sign In</md-toolbar>
+<div class="jumbotron col-md-6 col-md-offset-3 dash-head centeredContent thinnedContent">
+    <md-button class='md-raised noLeftMargin' ng-click="showReg()" layout='row' layout='center center'>{{status}}</md-button>
     <div ng-show="!reg">
-        <h2>Login</h2>
-        <form ng-submit="login()">
+        <form class='form' ng-submit="login()"  layout='column' layout-align='space-around start'>
+            <br />
             <p ng-show="error" class="text-danger">{{ error }}</p>
-            <input type="email" placeholder="Email" class="form-control" ng-model="details.email" required><br>
-            <input type="password" placeholder="Password" class="form-control" ng-model="details.password" required><br>
-            <input type="submit" class="btn btn-info" value="Sign In">
+            <input class="form-control noLeftMargin inputBox" type="email" placeholder="Email" ng-model="details.email" required flex><br>
+            <input class="form-control noLeftMargin inputBox" type="password" placeholder="Password" ng-model="details.password" required flex><br>
+            <!-- <input  type="submit" class="btn btn-info" value="Sign In" flex> -->
+            <md-button type="submit" class="md-raised noLeftMargin" layout='row' value="Sign In" flex>Sign In</md-button>
         </form>
     </div>
-    <div ng-show="reg">
-        <h2>Register</h2>
-        <!-- Step One Of Registration-->
-        <form ng-submit="register()">
+    <div  ng-show="reg">
+        <form class='form' ng-submit="register()" layout='column' layout-align='space-around start'>
+            <br />
             <p ng-show="error" class="text-danger">{{ error }}</p>
-            <input class="form-control" type="text" placeholder="Full Name" ng-model="details.name" required /><br />
-            <input class="form-control" type="email" placeholder="Email" ng-model="details.email" required /><br />
-            <input class="form-control" type="password" placeholder="Password" ng-model="details.password" required /><br />
-            <input type="submit" class="btn btn-info btn-lg" value="Register" />
+            <input class="form-control noLeftMargin inputBox" type="text" placeholder="Full Name" ng-model="details.name" required flex/><br />
+            <input class="form-control noLeftMargin inputBox" type="email" placeholder="Email" ng-model="details.email" required flex/><br />
+            <input class="form-control noLeftMargin inputBox" type="password" placeholder="Password" ng-model="details.password" required flex/><br />
+            <md-button type="submit" class="md-raised noLeftMargin" value="Register" flex>Register</md-button>
         </form>
     </div>
 </div>

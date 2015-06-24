@@ -5,8 +5,12 @@ app.service('dashboardService', function($firebase, $firebaseObject, $firebaseAr
 
 	var fbProfile = null;
 	var fbWorkouts;
+	var fbWorkoutsThirtyDays;
+	var fbThirtyWorkouts;
 	var sevenDaysWorkouts = [];
 	var sevenDaysAgo = null;
+	var thirtyDaysWorkouts = [];
+	var thirtyDaysAgo = null;
 	var dashboardService = this;
 
 	this.getProfile = function(uid){
@@ -31,7 +35,9 @@ app.service('dashboardService', function($firebase, $firebaseObject, $firebaseAr
 			});
 		} else {
 			if(fbWorkouts){
-				deferred.resolve(fbWorkouts);
+				fbWorkouts.$loaded(function(){
+					deferred.resolve(fbWorkouts);
+				});
 			} else {
 				deferred.reject('Sorry, there was nothing there')
 			}
@@ -44,36 +50,45 @@ app.service('dashboardService', function($firebase, $firebaseObject, $firebaseAr
 		sevenDaysAgo = Date.now() - sevenDays;
 	}
 
-	this.getSevenDaysWorkouts = function(uid){
-		// console.log('Getting Seven Days of Exercises');
-		sevenDaysWorkouts = [];
+	var getThirtyDays = function(){
+		var thirtyDays = 2592000000;
+		thirtyDaysAgo = Date.now() - thirtyDays;
+	}
+
+	this.getNumberDaysWorkouts = function(uid, numDays){
+		// console.log('Getting thirty Days of Exercises');
+		var numDaysWorkouts;
+		var numDaysAgo;
+		switch (numDays) {
+			case 30:
+				thirtyDaysWorkouts = [];
+				numDaysWorkouts = thirtyDaysWorkouts;
+				getThirtyDays();
+				numDaysAgo = thirtyDaysAgo;
+				break;
+			case 7:
+				sevenDaysWorkouts = [];
+				numDaysWorkouts = sevenDaysWorkouts;
+				getSevenDays();
+				numDaysAgo = sevenDaysAgo;
+				break;
+		}
 		var deferred = $q.defer();
-		dashboardService.getWorkouts(uid).then(function(fbWorkouts){
-			getSevenDays();
-			// console.log(fbWorkouts);
-			// console.log(sevenDaysAgo);
-			// console.log(fbWorkouts.length);
-			for(i = 0; i < fbWorkouts.length; i++){
-				// console.log(fbWorkouts[i]);
-				if(fbWorkouts[i].timestamp >= sevenDaysAgo){
-					// console.log('there is a timestamp');
-					sevenDaysWorkouts.push(fbWorkouts[i]);
+		dashboardService.getWorkouts(uid).then(function(fbWorkoutsNumDays){
+			for(i = 0; i < fbWorkoutsNumDays.length; i++){
+				if(fbWorkouts[i].timestamp >= numDaysAgo){
+					numDaysWorkouts.push(fbWorkouts[i]);
 
 				}
 			}
-			// console.log(sevenDaysWorkouts);
 
-			deferred.resolve(sevenDaysWorkouts);
+			deferred.resolve(numDaysWorkouts);
 		}).catch(function(err){
 			console.log(err);
 			deferred.reject(err);
 		})
 		return deferred.promise;
 	}
-
-
-
-
 
 })
 
