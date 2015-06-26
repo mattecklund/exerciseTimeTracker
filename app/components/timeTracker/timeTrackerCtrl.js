@@ -6,6 +6,16 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 	// $scope.userId = userAuthnData.auth.uid.replace('simplelogin:', '');
 	// console.log($scope.userId);
 
+	var pad = function(n){
+		return (n < 10) ? ("0" + n) : n;
+	}
+
+	$scope.stopwatchTime = {
+		hours: '00',
+		minutes: '00',
+		seconds: '00'
+	}
+
 
 	console.log('In the timeTrackerCtrl controller');
 
@@ -22,10 +32,15 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 	$scope.exercises = ['running', 'weightlifting', 'cycling', 'cardio'];
 	$scope.selectedCategory = null;
 
+	$scope.active = true;
+  	$scope.toggleColor = function() {
+    	$scope.active = !$scope.active;
+	};
 
 	$scope.selectCategory = function(category){
 		$scope.selectedCategory = category;
 		$scope.startExerciseDisabled = false;
+		$scope.toggleColor();
 	}
 
 	$scope.startWorkout = function(){
@@ -47,7 +62,8 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 		$scope.selectCategoryDisabled = !$scope.selectCategoryDisabled;
 		$scope.startExerciseDisabled = !$scope.startExerciseDisabled;
 		$scope.stopExerciseDisabled  = !$scope.stopExerciseDisabled;
-		console.log($scope.selectedCategory);
+		// console.log($scope.selectedCategory);
+		$scope.updateStopwatch();
 	};
 
 	$scope.stopExercise = function(category){
@@ -55,6 +71,7 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 		$scope.startExerciseDisabled = !$scope.startExerciseDisabled;
 		$scope.selectCategoryDisabled = !$scope.selectCategoryDisabled;
 		$scope.stopExerciseDisabled  = !$scope.stopExerciseDisabled;
+
 	}
 
 	$scope.logout = function(){
@@ -69,7 +86,7 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 		}, 1000);
 	}
 
-	$scope.updateStopwatch();
+	// $scope.updateStopwatch();
 	// $scope.stopwatchTime = timeTrackerService.updateStopwatch();
 	// $scope.stopwatchHours;
 	// $scope.stopwatchMinutes;

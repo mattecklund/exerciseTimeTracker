@@ -1,7 +1,7 @@
 var app = angular.module('exerciseTimeTracker');
 
 app.service('dashboardService', function($firebase, $firebaseObject, $firebaseArray, urls, $q){
-	console.log('in the Dashboard Service');
+	// console.log('in the Dashboard Service');
 
 	var fbProfile = null;
 	var fbWorkouts;

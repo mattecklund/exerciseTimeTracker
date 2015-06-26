@@ -7,6 +7,12 @@ var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute', 'ngMateri
 		dashboard: '/dashboard'
 	})
 
+	app.config(function($mdThemingProvider){
+		$mdThemingProvider.theme('highlight')
+    		.primaryPalette('blue')
+    		.accentPalette('orange');
+	});
+
 	app.config(function($routeProvider, urls){
 		// $httpProvider.interceptors.push('httpRequestInterceptor');
 

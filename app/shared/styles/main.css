@@ -114,6 +114,22 @@ md-sidenav {
   max-width: 95%;
 }
 
+.box-shadow-menu:not([disabled]):hover{
+  background-color: transparent;
+}
+
+.box-shadow-menu:not([disabled]):focus {
+  background-color: transparent;
+}
+
+.exerciseButton:focus {
+  background-color: rgba(63, 81, 181, 0.6);
+}
+
+.text-danger {
+  color: red;
+  
+}
 
 @media (min-width: 600px) and (max-width: 959px) {
   .statsBox {

@@ -1,9 +1,12 @@
 var app = angular.module('exerciseTimeTracker');
 
 app.controller('authnCtrl', function($scope, $location, authnService, urls){
-	var loginCallback = function(user){
-    // user.uid = user.uid.replace('simplelogin:', '');
-    $location.path(urls.dashboard)
+	var loginCallback = function(response){
+    if (response === "error"){
+      $scope.error = 'You have entered your username and/or password incorrectly';
+    } else {
+      $location.path(urls.dashboard);
+    }
   };
 
   $scope.login = function () {
@@ -24,4 +27,7 @@ app.controller('authnCtrl', function($scope, $location, authnService, urls){
     }
     $scope.reg = !$scope.reg;
   };
+
+
+
 });

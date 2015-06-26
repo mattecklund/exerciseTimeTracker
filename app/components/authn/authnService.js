@@ -17,16 +17,18 @@ app.service('authnService', function($firebaseAuth, urls, $location){
     }).then(function(authnData){
       // user authenticated with Firebase
       authnData.uid = authnData.uid.replace('simplelogin:', '');
-      console.log(authnData);
-      console.log("Logged In! User ID: " + authnData.uid);
+      // console.log(authnData);
+      // console.log("Logged In! User ID: " + authnData.uid);
       cb(authnData);
     }).catch(function(err){
       switch (err.code) {
         case "INVALID_EMAIL":
-          console.log("wrong email and/or password")
+          // console.log("wrong email and/or password");
+          cb("error");
           // add an error service or function that handles this in a clean way 
         case "INVALID_PASSWORD":
-          console.log("wrong email and/or password")
+          // console.log("wrong email and/or password");
+          cb("error");
         default:
       }
     });
