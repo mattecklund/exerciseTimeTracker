@@ -6,8 +6,12 @@
 	</div>
 	<br />
 	<div layout='row' layout-align='space-between center' layout-wrap layout-fill>	
-		<div ng-repeat='category in exercises' md-theme='{{ active ? "default" : "highlight" }}'>
-			<md-button class='md-raised smallButton exerciseButton' md-theme-watch='true' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>{{category}}</md-button>	<!-- set ng-class when current is selected using a function - if selected -->
+		<!-- <div ng-repeat='category in exercises' md-theme='{{ active ? "default" : "highlight" }}'>
+			<md-button class='md-raised smallButton exerciseButton' md-theme-watch='true' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'> -->
+		<div ng-repeat='category in exercises'>
+			<md-button class='md-raised smallButton exerciseButton' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>
+				{{category}}
+			</md-button>	<!-- set ng-class when current is selected using a function - if selected -->
 		</div>
 	</div>
 	<h1 class='md-display-3 centeredText'>{{stopwatchTime.hours}}:{{stopwatchTime.minutes}}:{{stopwatchTime.seconds}}</h1>

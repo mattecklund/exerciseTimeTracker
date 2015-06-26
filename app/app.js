@@ -4,7 +4,11 @@ var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute', 'ngMateri
 		fb: 'https://exercisetimetracker.firebaseio.com/',
 		authn: '/authn',
 		timeTracker: '/timeTracker',
-		dashboard: '/dashboard'
+		dashboard: '/dashboard',
+		terms: '/terms',
+		help: '/help',
+		contact: '/contact',
+		about: '/about'
 	})
 
 	app.config(function($mdThemingProvider){
@@ -57,6 +61,22 @@ var app = angular.module('exerciseTimeTracker', ['firebase','ngRoute', 'ngMateri
 						return dashboardService.getProfile(authnService.authnObj.$getAuth().uid);
 					}
 				}
+			})
+
+			.when(urls.terms, {
+				templateUrl: 'app/components/other/terms/terms.html'
+			})
+
+			.when(urls.help, {
+				templateUrl: 'app/components/other/help/help.html'
+			})
+
+			.when(urls.contact, {
+				templateUrl: 'app/components/other/contact/contact.html'
+			})
+
+			.when(urls.about, {
+				templateUrl: 'app/components/other/about/about.html'
 			})
 
 			.otherwise({

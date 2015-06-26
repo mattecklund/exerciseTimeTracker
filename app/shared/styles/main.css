@@ -123,12 +123,12 @@ md-sidenav {
 }
 
 .exerciseButton:focus {
-  background-color: rgba(63, 81, 181, 0.6);
+  background-color: rgba(63, 81, 181, 0.8);
 }
 
 .text-danger {
   color: red;
-  
+
 }
 
 @media (min-width: 600px) and (max-width: 959px) {

@@ -17,7 +17,7 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 	}
 
 
-	console.log('In the timeTrackerCtrl controller');
+	// console.log('In the timeTrackerCtrl controller');
 
 	var resetTimeTracker = function(){
 		$scope.startWorkoutDisabled = false;

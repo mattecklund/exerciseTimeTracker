@@ -1,7 +1,7 @@
 var app = angular.module('exerciseTimeTracker');
 
 app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject, $firebaseArray, urls){
-	console.log('In Her Majesty\'s timeTracker Service');
+	// console.log('In Her Majesty\'s timeTracker Service');
 	var timeService = this;
 
 	var workout = {};
