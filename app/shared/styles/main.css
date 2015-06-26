@@ -18,6 +18,7 @@ html, body {
 
 .thinnedContent {
   width: 95%;
+  max-width: 700px;
 }
 
 .centeredText {
@@ -45,6 +46,12 @@ html, body {
   /*max-width: 500px;*/
 }
 
+md-sidenav {
+    width: 250px;
+    max-width: 250px;
+    min-width: 250px;
+  }
+
 .box-shadow-menu {
   position: fixed;
   padding-left: 1.25em;
@@ -63,8 +70,8 @@ html, body {
     0 0.8em 0 0 black;
 }
 
-.md-button {
-  /*margin: 6px 8px 6px 0;*/
+.smallButton {
+  font-size: 11px;
 }
 
 .navBarTitle {
@@ -82,10 +89,10 @@ html, body {
   text-align: left;
 }
 
-/*.form-control {
+.form-control {
   width: 70%;
   margin: 10px auto;
-}*/
+}
 
 .form {
   height: 70%;
@@ -99,10 +106,20 @@ html, body {
   padding: 5px;
 }
 
+.timeTrackerContainer {
+  min-width: 80%;
+  width: 90%;
+  max-width: 95%;
+}
+
 @media (min-width: 600px) and (max-width: 959px) {
   .statsBox {
     min-width: 200px;
     max-width: 500px;
+  }
+
+  .smallButton {
+    font-size: 13px;
   }
 
 }
@@ -113,7 +130,9 @@ html, body {
   }
 
   .thinnedContent {
+    min-width: 450px;
     width: 45%;
+    max-width: 650px;
   }
 
   .statsBox {
@@ -134,6 +153,17 @@ html, body {
   .form-control {
     width: 100%;
   }
+
+  .timeTrackerContainer {
+    /*min-width: 55%;*/
+    width: 55%;
+    /*max-width: 85%;*/
+  }
+
+  .smallButton {
+    font-size: 13px;
+  }
+
 
 }
 

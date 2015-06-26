@@ -22,7 +22,7 @@
 	    </div>
 			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" layout-fill>
 				<md-toolbar class="md-theme-indigo" layout='row'>
-	        		<h1 class="md-toolbar-tools navBarTitle" flex>{{userProfile.name}}</h1>
+	        		<h1 class="md-toolbar-tools navBarTitle md-title" flex>{{userProfile.name}}</h1>
 	        		<md-button ng-click='close()' class='box-shadow-menu zIndex10' flex></md-button>
 	      		</md-toolbar>
 	      		<md-content class="md-padding">
@@ -32,10 +32,10 @@
 						<!-- <md-list-item><md-button href='/#/profile'>Profile</md-button></md-list-item> -->
 						<md-list-item ng-hide='isAuthenticated'><md-button class='navBarButton' ng-click="close()" href='/#/authn'>Sign In/Register</md-button></md-list-item>
 						<md-list-item ng-show='isAuthenticated'><md-button class='navBarButton' ng-click="logout()" href='/#/logout'>Sign Out</md-button></md-list-item>
-						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/terms'>Terms of Use</md-button></md-list-item>
+						<!-- <md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/terms'>Terms of Use</md-button></md-list-item>
 						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/help'>Help</md-button></md-list-item>
 						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/contact'>Contact</md-button></md-list-item>
-						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/about'>About</md-button></md-list-item>
+						<md-list-item><md-button class='navBarButton' ng-click="close()" href='/#/about'>About</md-button></md-list-item> -->
 					</md-list>
 				</md-content>
 			</md-sidenav>			

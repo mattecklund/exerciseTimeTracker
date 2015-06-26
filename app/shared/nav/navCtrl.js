@@ -21,6 +21,7 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
     authnService.logout();
   }
 
+
   try {
     $scope.userUid = authnService.authnObj.$getAuth().uid.replace('simplelogin:', '')
     // console.log($scope.userUid);
