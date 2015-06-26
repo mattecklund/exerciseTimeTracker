@@ -1,14 +1,20 @@
-<md-toolbar class='md-display-3 centeredText'>Exercise Time Tracker</md-toolbar>
+<md-toolbar class='md-display-3 centeredText'>Track Time</md-toolbar>
 <div class='centeredContent thinnedContent'>
-	<h1>Time Tracker</h1>
-		<button class='button1' ng-click='startWorkout()' ng-disabled='startWorkoutDisabled'>Start Workout</button>
-		<button class='button1' ng-click='stopWorkout(selectedCategory)' ng-disabled='stopWorkoutDisabled'>Stop Workout</button>
-	<h2>Exercises</h2>
-	<div ng-repeat='category in exercises'>	<!-- ng-disabled on buttons to disable the category selectors once start exercise has run-->
-		<button class='button1' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>{{category}}</button>	<!-- set ng-class when current is selected using a function - if selected -->
+	<div layout='row' layout-align='space-around center'>
+		<md-button class='md-raised smallButton' ng-click='startWorkout()' ng-disabled='startWorkoutDisabled'>Begin Workout</md-button>
+		<md-button class='md-raised smallButton' ng-click='stopWorkout(selectedCategory)' ng-disabled='stopWorkoutDisabled'>End Workout</md-button>
 	</div>
-	
-	<h3>Start/Stop</h3>
-		<button class='button1' ng-click='startExercise(selectedCategory)' ng-disabled='startExerciseDisabled'>Start Exercise</button>  
-		<button class='button1' ng-click='stopExercise(selectedCategory)' ng-disabled='stopExerciseDisabled'>Stop Exercise</button>
+	<br />
+	<div layout='row' layout-align='space-between center' layout-wrap layout-fill>	
+		<div ng-repeat='category in exercises'>	<!-- ng-disabled on buttons to disable the category selectors once start exercise has run-->
+			<md-button class='md-raised smallButton' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>{{category}}</md-button>	<!-- set ng-class when current is selected using a function - if selected -->
+		</div>
+	</div>
+	<br />
+	<div>StopWatch</div>
+	<div>{{stopwatchTime.hours}}:{{stopwatchTime.minutes}}:{{stopwatchTime.seconds}}</div>
+	<div layout='row' layout-align='space-around center'>
+		<md-button class=' md-raised smallButton' ng-click='startExercise(selectedCategory)' ng-disabled='startExerciseDisabled'>Start</md-button>
+		<md-button class=' md-raised smallButton' ng-click='stopExercise(selectedCategory)' ng-disabled='stopExerciseDisabled'>Stop</md-button>
+	</div>
 </div>
