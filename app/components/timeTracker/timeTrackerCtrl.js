@@ -63,12 +63,9 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 	};
 
 	$scope.updateStopwatch = function(){
-		// console.log('outside of setInterval');
 		setInterval(function(){
-			// console.log('inside of setInterval');
 			$scope.$apply(function(){
 				$scope.stopwatchTime = timeTrackerService.updateStopwatch();
-				// console.log($scope.stopwatchTime);
 			})
 		}, 1000);
 	}

@@ -60,13 +60,9 @@ app.service('timeTrackerService', function($http, $q, $firebase, $firebaseObject
 	this.updateStopwatch = function() {
 		if (timeService.startTime){
 			elapsedTime = Math.floor((performance.now() - timeService.startTime) / 1000);
-			// console.log(elapsedTime);
-			console.log(performance.now() - timeService.startTime);
 			stopwatchTime.hours = pad(Math.floor(elapsedTime / 3600));
 			stopwatchTime.minutes = pad(Math.floor(elapsedTime / 60));
-			// console.log(elapsedTime % 3600);
 			stopwatchTime.seconds = pad(Math.floor(elapsedTime % 3600) % 60);
-			// console.log(stopwatchTime);
 			return stopwatchTime;
 		} else {
 			stopwatchTime.hours = pad(0);
