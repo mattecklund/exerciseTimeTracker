@@ -19,28 +19,34 @@ app.controller('navCtrl', function($scope, $timeout, $mdSidenav, $mdComponentReg
 
   $scope.logout = function(){
     authnService.logout();
+    $location.path('/authn');
   }
 
+  $scope.authnUpdate = function(){
+    setInterval(function(){
+      $scope.$apply(function(){
+        try {
+            $scope.userUid = authnService.authnObj.$getAuth().uid.replace('simplelogin:', '')
+            // console.log($scope.userUid);
+            $scope.userProfile = dashboardService.getProfile($scope.userUid);
+          } catch(e) {
+            console.log('not logged in');
+            $scope.userProfile = {
+              name: 'Navigation'
+            }
+          }
 
-  try {
-    $scope.userUid = authnService.authnObj.$getAuth().uid.replace('simplelogin:', '')
-    // console.log($scope.userUid);
-    $scope.userProfile = dashboardService.getProfile($scope.userUid);
-  } catch(e) {
-    console.log('not logged in');
-    $scope.userProfile = {
-      name: 'Navigation'
-    }
-  }
+          if($scope.userProfile.name !== 'Navigation'){
+            $scope.isAuthenticated = true;
+          } else {
+            $scope.isAuthenticated = false;
+          }
+      })
+    }, 1000);
+  };
+
+  $scope.authnUpdate();
 
   
-  // console.log($scope.userProfile);
-  // console.log($scope.userProfile.name);
-
-  if($scope.userProfile.name !== 'Navigation'){
-    $scope.isAuthenticated = true;
-  } else {
-    $scope.isAuthenticated = false;
-  }
 
 })

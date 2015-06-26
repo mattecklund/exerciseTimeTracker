@@ -10,9 +10,7 @@
 			<md-button class='md-raised smallButton' ng-click='selectCategory(category)' ng-disabled='selectCategoryDisabled'>{{category}}</md-button>	<!-- set ng-class when current is selected using a function - if selected -->
 		</div>
 	</div>
-	<br />
-	<div>StopWatch</div>
-	<div>{{stopwatchTime.hours}}:{{stopwatchTime.minutes}}:{{stopwatchTime.seconds}}</div>
+	<h1 class='md-display-3 centeredText'>{{stopwatchTime.hours}}:{{stopwatchTime.minutes}}:{{stopwatchTime.seconds}}</h1>
 	<div layout='row' layout-align='space-around center'>
 		<md-button class=' md-raised smallButton' ng-click='startExercise(selectedCategory)' ng-disabled='startExerciseDisabled'>Start</md-button>
 		<md-button class=' md-raised smallButton' ng-click='stopExercise(selectedCategory)' ng-disabled='stopExerciseDisabled'>Stop</md-button>

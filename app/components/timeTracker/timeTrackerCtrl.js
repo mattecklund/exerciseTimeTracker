@@ -26,7 +26,6 @@ app.controller('timeTrackerCtrl', function($scope, timeTrackerService, userAuthn
 	$scope.selectCategory = function(category){
 		$scope.selectedCategory = category;
 		$scope.startExerciseDisabled = false;
-		// console.log($scope.selectedCategory);
 	}
 
 	$scope.startWorkout = function(){
