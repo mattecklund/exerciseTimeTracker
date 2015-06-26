@@ -76,7 +76,8 @@ md-sidenav {
 
 .navBarTitle {
   width: 70%;
-  max-width: 250px;
+  max-width: 200px;
+  padding: 0 8px;
 }
 
 .navBarThin {
@@ -104,6 +105,7 @@ md-sidenav {
 
 .inputBox {
   padding: 5px;
+  width: 100%;
 }
 
 .timeTrackerContainer {
